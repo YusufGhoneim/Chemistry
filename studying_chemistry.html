@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studying Chemistry - Acids & Bases</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 1rem;
+        }
+
+        .section h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f3ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        /* Theory Box */
+        .theory-box {
+            background: var(--light);
+            border-left: 5px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .theory-box strong {
+            color: var(--secondary);
+        }
+
+        /* Example Box */
+        .example-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .example-box strong {
+            color: #d97706;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light);
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fecaca 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .quiz-item {
+            background: var(--white);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .quiz-item h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: var(--light);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: #e5e7eb;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin-right: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: #0891b2;
+        }
+
+        /* Results */
+        .result-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .result-box.success {
+            background: #d1fae5;
+            border-left: 5px solid var(--success);
+            color: #065f46;
+            display: block;
+        }
+
+        .result-box.error {
+            background: #fee2e2;
+            border-left: 5px solid var(--danger);
+            color: #7f1d1d;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #fef08a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🧪 Studying Chemistry</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('theories')">Theories</a></li>
+                <li><a onclick="scrollToSection('comparison')">Compare</a></li>
+                <li><a onclick="scrollToSection('quiz')">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Understanding Acids & Bases</h1>
+        <p>Master the three fundamental theories explained in simple terms</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Introduction -->
+        <div class="section">
+            <h2>🌟 Welcome to Acids & Bases</h2>
+            <p>In this lesson, we'll explore three different ways scientists define and explain acids and bases. Each theory builds on the previous one, giving us a deeper understanding of how these important substances work.</p>
+            <p style="margin-top: 1rem;">Think of it like viewing the same building from three different angles—each perspective reveals something new!</p>
+        </div>
+
+        <!-- Theories Section -->
+        <div id="theories" class="section">
+            <h2>📚 The Three Theories</h2>
+
+            <!-- Arrhenius Theory -->
+            <h3>1️⃣ Arrhenius Theory (Simplest)</h3>
+            <div class="card">
+                <h4>The Basic Idea</h4>
+                <p><strong>Acids:</strong> Substances that produce H₃O⁺ (hydronium ions) in water</p>
+                <p style="margin-top: 0.5rem;"><strong>Bases:</strong> Substances that produce OH⁻ (hydroxide ions) in water</p>
+            </div>
+
+            <div class="theory-box">
+                <strong>Simple Analogy:</strong> Imagine acids as "H⁺ factories" and bases as "OH⁻ factories." When they dissolve in water, they produce these ions.
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> HCl + H₂O → H₃O⁺ + Cl⁻<br>
+                Hydrochloric acid breaks apart to release hydronium ions, making the solution acidic.
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">Common Arrhenius Acids & Bases:</h4>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Strong Acids</h4>
+                    <p>• HCl (Hydrochloric acid)<br>• H₂SO₄ (Sulfuric acid)<br>• HNO₃ (Nitric acid)<br>• HI (Hydroiodic acid)</p>
+                </div>
+                <div class="card">
+                    <h4>Strong Bases</h4>
+                    <p>• NaOH (Sodium hydroxide)<br>• KOH (Potassium hydroxide)<br>• Ca(OH)₂ (Calcium hydroxide)<br>• LiOH (Lithium hydroxide)</p>
+                </div>
+            </div>
+
+            <div class="theory-box" style="background: #fee2e2; border-left-color: #ef4444;">
+                <strong style="color: #b91c1c;">⚠️ Limitation:</strong> Arrhenius theory only works in water! It can't explain bases like ammonia (NH₃) that don't have OH⁻ groups.
+            </div>
+
+            <!-- Brønsted-Lowry Theory -->
+            <h3 style="margin-top: 3rem;">2️⃣ Brønsted-Lowry Theory (More Flexible)</h3>
+            <div class="card">
+                <h4>The Basic Idea</h4>
+                <p><strong>Acids:</strong> Substances that <span class="highlight">donate protons (H⁺)</span></p>
+                <p style="margin-top: 0.5rem;"><strong>Bases:</strong> Substances that <span class="highlight">accept protons (H⁺)</span></p>
+            </div>
+
+            <div class="theory-box">
+                <strong>Simple Analogy:</strong> Think of acids as "H⁺ givers" and bases as "H⁺ takers." It's like a game of catch with protons!
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> NH₃ + H₂O ⇌ NH₄⁺ + OH⁻<br>
+                Water donates a proton to ammonia (water = acid), and ammonia accepts it (ammonia = base).
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">🔄 Conjugate Pairs</h4>
+            <div class="card">
+                <p>When an acid donates a proton, it becomes its <strong>conjugate base</strong>.<br><br>When a base accepts a proton, it becomes its <strong>conjugate acid</strong>.<br><br><span class="highlight">Rule: Strong acids have weak conjugate bases (and vice versa!)</span></p>
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">💧 Amphoteric Substances</h4>
+            <div class="theory-box">
+                <strong>Water is amphoteric!</strong> It can act as both an acid AND a base depending on what it reacts with:
+                <p style="margin-top: 0.5rem;">• With HCl: H₂O accepts a proton → Base</p>
+                <p>• With NH₃: H₂O donates a proton → Acid</p>
+            </div>
+
+            <!-- Lewis Theory -->
+            <h3 style="margin-top: 3rem;">3️⃣ Lewis Theory (Most Advanced)</h3>
+            <div class="card">
+                <h4>The Basic Idea</h4>
+                <p><strong>Acids:</strong> Substances that <span class="highlight">accept electron pairs</span></p>
+                <p style="margin-top: 0.5rem;"><strong>Bases:</strong> Substances that <span class="highlight">donate electron pairs</span></p>
+            </div>
+
+            <div class="theory-box">
+                <strong>Simple Analogy:</strong> Think of acids as "electron pair lovers" and bases as "electron pair givers." This theory doesn't care about protons or water!
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> BF₃ + NH₃ → BF₃NH₃<br>
+                BF₃ lacks electrons (Lewis acid), NH₃ has extra electrons (Lewis base). They bond by sharing NH₃'s electron pair.
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">🎯 Why Lewis Theory is Important:</h4>
+            <div class="card">
+                <p>✓ Works with ANY reaction (not just in water)<br>✓ Explains reactions without H⁺ or OH⁻<br>✓ Covers metal ions like Al³⁺ and Mg²⁺<br>✓ Explains complex ion formation</p>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div id="comparison" class="section">
+            <h2>🔍 Comparing All Three Theories</h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Aspect</th>
+                    <th>Arrhenius</th>
+                    <th>Brønsted-Lowry</th>
+                    <th>Lewis</th>
+                </tr>
+                <tr>
+                    <td><strong>Acid Definition</strong></td>
+                    <td>Produces H₃O⁺ in water</td>
+                    <td>Donates H⁺</td>
+                    <td>Accepts electron pairs</td>
+                </tr>
+                <tr>
+                    <td><strong>Base Definition</strong></td>
+                    <td>Produces OH⁻ in water</td>
+                    <td>Accepts H⁺</td>
+                    <td>Donates electron pairs</td>
+                </tr>
+                <tr>
+                    <td><strong>Works in Water?</strong></td>
+                    <td>Only in water</td>
+                    <td>Yes, and other solvents</td>
+                    <td>Any medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Explains NH₃?</strong></td>
+                    <td>❌ No</td>
+                    <td>✅ Yes</td>
+                    <td>✅ Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Broadest?</strong></td>
+                    <td>Most limited</td>
+                    <td>More flexible</td>
+                    <td>Most comprehensive</td>
+                </tr>
+            </table>
+
+            <div class="theory-box">
+                <strong>💡 Remember:</strong> Each theory is correct within its scope! Arrhenius is simpler, Brønsted-Lowry is more flexible, and Lewis is the most comprehensive.
+            </div>
+        </div>
+
+        <!-- Real-World Applications -->
+        <div class="section">
+            <h2>🌍 Acids & Bases in Real Life</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🍋 In Your Kitchen</h4>
+                    <p><strong>Citric Acid:</strong> Lemons and limes<br><strong>Acetic Acid:</strong> Vinegar<br><strong>Baking Soda:</strong> A base for baking</p>
+                </div>
+                <div class="card">
+                    <h4>💊 In Your Body</h4>
+                    <p><strong>HCl:</strong> Stomach acid for digestion<br><strong>Bases:</strong> Help neutralize acids<br><strong>pH:</strong> Must stay balanced!</p>
+                </div>
+                <div class="card">
+                    <h4>🏭 In Industry</h4>
+                    <p><strong>H₂SO₄:</strong> Most produced chemical<br><strong>Water Treatment:</strong> pH control crucial<br><strong>Desalination:</strong> Used in UAE</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz" class="section">
+            <h2>📝 Test Your Knowledge!</h2>
+            <p style="margin-bottom: 2rem;">Answer these questions to check your understanding:</p>
+
+            <div class="quiz-section">
+                <!-- Question 1 -->
+                <div class="quiz-item">
+                    <h4>Question 1: Which theory best explains why ammonia (NH₃) is a base?</h4>
+                    <div class="option">
+                        <input type="radio" name="q1" value="a" id="q1a">
+                        <label for="q1a"><strong>A:</strong> Arrhenius theory - it produces OH⁻ ions</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="b" id="q1b">
+                        <label for="q1b"><strong>B:</strong> Brønsted-Lowry theory - it accepts H⁺ protons</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="c" id="q1c">
+                        <label for="q1c"><strong>C:</strong> Lewis theory - it donates electron pairs</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="d" id="q1d">
+                        <label for="q1d"><strong>D:</strong> All three theories explain it equally</label>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAnswer('q1', 'b')">Check Answer</button>
+                    <div class="result-box" id="result-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-item">
+                    <h4>Question 2: What is the conjugate base of H₂SO₄?</h4>
+                    <div class="option">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a"><strong>A:</strong> H₃SO₄⁺</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b"><strong>B:</strong> HSO₄⁻</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c"><strong>C:</strong> SO₄²⁻</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d"><strong>D:</strong> H₂SO₃</label>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAnswer('q2', 'b')">Check Answer</button>
+                    <div class="result-box" id="result-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-item">
+                    <h4>Question 3: According to Lewis theory, BF₃ is a Lewis acid because:</h4>
+                    <div class="option">
+                        <input type="radio" name="q3" value="a" id="q3a">
+                        <label for="q3a"><strong>A:</strong> It produces H₃O⁺ in water</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="b" id="q3b">
+                        <label for="q3b"><strong>B:</strong> It donates H⁺ protons</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="c" id="q3c">
+                        <label for="q3c"><strong>C:</strong> It accepts electron pairs</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="d" id="q3d">
+                        <label for="q3d"><strong>D:</strong> It contains fluorine atoms</label>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAnswer('q3', 'c')">Check Answer</button>
+                    <div class="result-box" id="result-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-item">
+                    <h4>Question 4: Water acts as an amphoteric substance. Which statement is correct?</h4>
+                    <div class="option">
+                        <input type="radio" name="q4" value="a" id="q4a">
+                        <label for="q4a"><strong>A:</strong> Water is always an acid</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="b" id="q4b">
+                        <label for="q4b"><strong>B:</strong> Water can act as both acid and base depending on what it reacts with</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="c" id="q4c">
+                        <label for="q4c"><strong>C:</strong> Water is never a base</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="d" id="q4d">
+                        <label for="q4d"><strong>D:</strong> Water is always neutral</label>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAnswer('q4', 'b')">Check Answer</button>
+                    <div class="result-box" id="result-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-item">
+                    <h4>Question 5: Which limitation of Arrhenius theory is addressed by Lewis theory?</h4>
+                    <div class="option">
+                        <input type="radio" name="q5" value="a" id="q5a">
+                        <label for="q5a"><strong>A:</strong> Can't explain acids in non-aqueous solutions</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="b" id="q5b">
+                        <label for="q5b"><strong>B:</strong> Can't explain reactions without H⁺ or OH⁻</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="c" id="q5c">
+                        <label for="q5c"><strong>C:</strong> Can't work in water</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="d" id="q5d">
+                        <label for="q5d"><strong>D:</strong> Can't identify strong acids</label>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAnswer('q5', 'b')">Check Answer</button>
+                    <div class="result-box" id="result-q5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="section">
+            <h2>🎓 Key Takeaways</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>✨ Arrhenius</h4>
+                    <p>Simple but limited. Only works in water. Good for basic understanding.</p>
+                </div>
+                <div class="card">
+                    <h4>⚡ Brønsted-Lowry</h4>
+                    <p>More flexible. Focuses on proton transfer. Works in various solvents.</p>
+                </div>
+                <div class="card">
+                    <h4>🔬 Lewis</h4>
+                    <p>Most comprehensive. Focuses on electron pairs. Works everywhere!</p>
+                </div>
+            </div>
+
+            <div class="theory-box" style="background: #d1fae5; border-left-color: var(--success); margin-top: 2rem;">
+                <strong style="color: #065f46;">✅ Success Tip:</strong> Don't memorize—understand! Each theory is just a different way to look at the same chemistry. Think about which one best fits the situation!
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Studying Chemistry | Master the fundamentals of acids and bases 🧪</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">For deeper learning, explore real-world applications and practice with experiments!</p>
+    </footer>
+
+    <script>
+        // Smooth scroll function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Check answer function
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultBox = document.getElementById(`result-${questionId}`);
+
+            if (!selectedAnswer) {
+                resultBox.textContent = '⚠️ Please select an answer first!';
+                resultBox.className = 'result-box error';
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                resultBox.innerHTML = '✅ <strong>Correct!</strong> Great job! You\'re understanding the concepts well.';
+                resultBox.className = 'result-box success';
+            } else {
+                resultBox.innerHTML = '❌ <strong>Not quite!</strong> Try to think about which theory focuses on electron pairs, proton transfer, or ion production. Review the theory section and try again!';
+                resultBox.className = 'result-box error';
+            }
+        }
+
+        // Smooth animation on page load
+        window.addEventListener('load', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
